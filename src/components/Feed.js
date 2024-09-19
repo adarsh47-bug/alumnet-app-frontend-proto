@@ -97,7 +97,7 @@ const Feed = () => {
 
   return (
     <div className='max-lg:flex flex-col items-center min-h-[90vh]'>
-      <article className="lg:absolute left-[5%] top-[13%] lg:w-[22%] rounded-xl border border-gray-700 bg-gray-800 p-4 shadow-lg ">
+      <article className="lg:absolute left-[5%] top-[13%] lg:w-[22%] max-sm:w-[100%] rounded-xl border border-gray-700 bg-gray-800 p-4 shadow-lg ">
         <div className="flex items-center gap-4">
           <img
             alt="Profile"
@@ -141,7 +141,7 @@ const Feed = () => {
       <div className={`flex flex-row container max-sm:w-fit ${isPopupVisible ? 'blur-sm' : ''}`}>
         <div className="mx-auto p-4 max-sm:p-1 lg:w-[45%] md:w-[70%] sm:w-[90%] max-sm:w-fit">
           <h1 className="text-2xl font-semibold mb-6 max-sm:text-center max-sm:mt-8">Latest Feeds</h1>
-          <div onClick={togglePopup} className="bg-white shadow-md rounded-lg p-4 mb-6 border border-gray-600 max-sm:w-[92%] max-sm:m-auto max-sm:my-4">
+          <div onClick={togglePopup} className="bg-white shadow-md rounded-lg p-4 mb-6 border border-gray-600 max-sm:w-[100%] max-sm:m-auto max-sm:my-4">
             <div className="flex items-center gap-4 ">
               <img alt="Profile" src={user.profileImg} className="size-12 rounded-full object-cover" />
               <div className='w-[75%]'>
