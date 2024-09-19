@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
+// import { useParams, useNavigate } from 'react-router-dom';
+import axios from '../axios';
 import { AuthContext } from '../context/authContext';
 
 const ProfileSection = ({ id, title, img = undefined, content, isList = false, itemFormat }) => (
@@ -40,9 +41,9 @@ const ViewProfilePage = () => {
   const [loading, setLoading] = useState(true);
   const [connections, setConnections] = useState([]);
   const [connectionRequestsSent, setConnectionRequestsSent] = useState([]);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const user = useContext(AuthContext);
-  const currentId = user.user._id;
+  // const currentId = user.user._id;
 
   const token = localStorage.getItem('token');
   if (!token) throw new Error('No token found');
@@ -76,22 +77,22 @@ const ViewProfilePage = () => {
     fetchUserConnections();
   }, [userId]);
 
-  const handleClick = async (user) => {
-    try {
-      const res = await axios.get(`/api/conversations/find/${currentId}/${user._id}`);
-      if (!res.data) {
-        const newConversation = await axios.post("/api/conversations/", {
-          senderId: currentId,
-          receiverId: user._id,
-        });
-        navigate(`/messenger`, { state: { currentChat: newConversation.data } });
-      } else {
-        navigate(`/messenger`, { state: { currentChat: res.data } });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleClick = async (user) => {
+  //   try {
+  //     const res = await axios.get(`/api/conversations/find/${currentId}/${user._id}`);
+  //     if (!res.data) {
+  //       const newConversation = await axios.post("/api/conversations/", {
+  //         senderId: currentId,
+  //         receiverId: user._id,
+  //       });
+  //       navigate(`/messenger`, { state: { currentChat: newConversation.data } });
+  //     } else {
+  //       navigate(`/messenger`, { state: { currentChat: res.data } });
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const handleSendConnectionRequest = async (user) => {
     try {
@@ -153,7 +154,8 @@ const ViewProfilePage = () => {
           </div>
           {isConnected ? (
             <button
-              onClick={() => handleClick(profile)}
+              // onClick={() => handleClick(profile)}
+              onClick={alert("Currently in construction state.")}
               className="mt-4 px-4 py-2 m-4 bg-green-500 text-white rounded-lg"
             >
               Message

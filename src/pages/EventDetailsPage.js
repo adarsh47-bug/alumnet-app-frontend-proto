@@ -1,7 +1,7 @@
 // src/pages/EventDetailsPage.js
 import React, { useState, useEffect, useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../axios';
 import { AuthContext } from '../context/authContext';
 
 const EventDetailsPage = () => {
