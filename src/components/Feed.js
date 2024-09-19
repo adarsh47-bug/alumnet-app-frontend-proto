@@ -150,7 +150,7 @@ const Feed = () => {
               <button className='rounded-lg w-fit bg-blue-400 text-white font-semibold text-sm p-2 flex items-center justify-between'><span className='max-sm:hidden'>Create</span> <span class="material-icons px-2">create</span></button>
             </div>
           </div>
-          <div className="space-y-4 max-sm:w-[92%] max-sm:m-auto">
+          <div className="space-y-4 max-sm:w-[100%] max-sm:m-auto">
             {
               posts.map((post) => (
                 <FeedCard key={post._id} post={post} onDeletePost={handleDeletePost} onClosePost={handleClosePost} user={user} connections={connections} />

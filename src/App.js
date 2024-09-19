@@ -28,6 +28,7 @@ import IntroPage from './pages/IntroPage';
 import CareerAssistanceAI from './aimodels/CareerAssistanceAI';
 import LearnWithMeAI from './aimodels/LearnWithMeAI';
 import Messenger from './pages/messenger/messenger';
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   return (
@@ -68,6 +69,7 @@ const App = () => {
 
         </Routes>
       </div>
+      <Analytics />
     </AuthProvider>
   );
 };

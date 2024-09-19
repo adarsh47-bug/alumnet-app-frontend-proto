@@ -171,7 +171,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
             <img
               src={post?.media}
               alt="Post media"
-              className={`w-full object-cover my-4 rounded-lg max-h-[${post?.size > 42 ? 42 : post?.size}rem]`}
+              className={`w-full object-cover my-4 rounded-lg max-h-[${post?.size > 42 ? 42 : post?.size}rem] max-sm:min-h-[19rem]`}
             />
             <p className="text-gray-600 py-2">
               {showFullContent || post?.content.length <= contentPreviewLimit
