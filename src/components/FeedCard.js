@@ -163,7 +163,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
       </div>
 
       <div className="mt-2">
-        <h3 className="text-xl font-medium mb-2">{post?.title}</h3>
+        <h3 className="text-xl max-sm:text-lg font-medium mb-2">{post?.title}</h3>
 
         {/* Render different types of content */}
         {post?.type === 'media' && (
@@ -173,7 +173,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
               alt="Post media"
               className={`w-full object-cover my-4 rounded-lg max-h-[${post?.size > 42 ? 42 : post?.size}rem] max-sm:min-h-[19rem]`}
             />
-            <p className="text-gray-600 py-2">
+            <p className="text-gray-600 py-2 text-base">
               {showFullContent || post?.content.length <= contentPreviewLimit
                 ? post?.content
                 : `${post?.content.substring(0, contentPreviewLimit)}...`}
@@ -192,7 +192,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
         )}
         {post?.type === 'article' && (
           <div>
-            <p className="text-gray-600 py-2">
+            <p className="text-gray-600 py-2 text-base">
               {showFullContent || post?.content.length <= contentPreviewLimit
                 ? post?.content
                 : `${post?.content.substring(0, contentPreviewLimitArticle)}...`}
@@ -226,7 +226,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
         {post?.type === 'discussion' && (
           <div>
             {/* Shorten content if too long */}
-            <p className="text-gray-600 py-2">
+            <p className="text-gray-600 py-2 text-base">
               {showFullContent || post?.content.length <= contentPreviewLimit
                 ? post?.content
                 : `${post?.content.substring(0, contentPreviewLimit)}...`}
