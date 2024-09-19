@@ -5,7 +5,7 @@ import axios from '../axios';
 import { AuthContext } from '../context/authContext';
 
 const ProfileSection = ({ id, title, img = undefined, content, isList = false, itemFormat }) => (
-  <article id={id} className="w-full rounded-xl border border-gray-300 bg-[#fff2f238] text-black p-6 m-3 shadow-lg">
+  <article id={id} className="w-full rounded-xl border border-gray-300 bg-[#fff2f238] text-black p-6 m-3 shadow-lg max-sm:w-[110%]">
     <h2 className="text-2xl font-bold text-black mb-4">{title}</h2>
     {isList ? (
       content.length > 0 ? (
@@ -26,9 +26,9 @@ const ProfileSection = ({ id, title, img = undefined, content, isList = false, i
     )}
 
     {img &&
-      (<div className="flex flex-wrap items-center justify-center gap-4">
+      (<div className="flex flex-wrap items-center justify-center gap-4 max-sm:flex-col">
         <span className='px-4 py-3 hover:bg-slate-200 rounded-full text-4xl text-gray-500'>&larr;</span>
-        {img?.map(url => <img src={url} alt="line" className="w-[40%] mt-4" />)}
+        {img?.map(url => <img src={url} alt="line" className="w-[40%] max-sm:w-[100%] rounded-lg mt-4" />)}
         <span className='px-4 py-3 hover:bg-slate-200 rounded-full text-4xl text-gray-500'>&rarr;</span>
       </div>)
     }
@@ -139,15 +139,15 @@ const ViewProfilePage = () => {
 
   return (
     <div className="container mx-auto p-6">
-      <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-sm:flex max-sm:flex-col max-sm:items-center">
         <div className="flex max-sm:flex-col items-center gap-6 mb-6">
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-6 max-sm:flex-col">
             <img
               src={profile.profileImg}
               alt={`${profile.name}'s profile`}
               className="w-32 h-32 rounded-full object-cover border-2 border-blue-500"
             />
-            <div>
+            <div className='text-center'>
               <h2 className="text-3xl font-bold text-gray-900">{profile.name}</h2>
               <p className="text-gray-500">{profile?.experience?.length === 0 ? 'No specified' : `${profile?.experience[0]?.position} at ${profile?.experience[0]?.company}`}</p>
             </div>
@@ -155,7 +155,7 @@ const ViewProfilePage = () => {
           {isConnected ? (
             <button
               // onClick={() => handleClick(profile)}
-              onClick={alert("Currently in construction state.")}
+              onClick={() => alert("Currently in construction state.")}
               className="mt-4 px-4 py-2 m-4 bg-green-500 text-white rounded-lg"
             >
               Message

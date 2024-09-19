@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 // Sidebar component for navigation
 const Sidebar = ({ navigation, activeTab, onTabClick, sentRequestsCount, receivedRequestsCount }) => {
   return (
-    <div className="w-[20%] h-screen flex flex-col justify-between border-e bg-white">
+    <div className="w-[20%] h-screen flex flex-col justify-between border-e bg-white  max-sm:w-[100%] max-sm:h-fit">
       <div className="px-4 py-6">
         <ul className="mt-6 space-y-1">
           {navigation.map((item, index) => (

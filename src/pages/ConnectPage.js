@@ -152,7 +152,7 @@ const ConnectPage = () => {
         receivedRequestsCount={connectionRequestsReceived.length}
       />
       {!(activeTab === 'Messaging') ? (
-        <div className="w-[80%] p-8">
+        <div className="w-[80%] max-sm:w-[100%] p-8 max-sm:p-4">
           <h1 className="text-3xl font-bold text-blue-800 mb-6">{activeTab}</h1>
 
           {/* Search Input */}

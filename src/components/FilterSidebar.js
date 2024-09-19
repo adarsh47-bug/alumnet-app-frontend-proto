@@ -2,8 +2,8 @@ import React from 'react';
 
 const FilterSidebar = ({ filters, onFilterChange }) => {
   return (
-    <div className='flex flex-col space-y-4'>
-      <div className="filter-sidebar p-4 bg-[#cfcfcf09] h-fit rounded-lg">
+    <div className='flex flex-col space-y-4 max-sm:space-y-1 max-sm:my-4'>
+      <div className="filter-sidebar p-4 max-sm:pb-2 bg-[#cfcfcf09] h-fit rounded-lg">
         <h2 className="text-xl font-bold mb-4">Filter Collaboration</h2>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="location">
@@ -57,7 +57,7 @@ const FilterSidebar = ({ filters, onFilterChange }) => {
           </select>
         </div>
       </div>
-      <div className="filter-sidebar p-4 bg-[#cfcfcf09] h-fit rounded-lg">
+      <div className="filter-sidebar p-4 bg-[#cfcfcf09] h-fit rounded-lg max-sm:py-2">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="keyword">
             Keyword Search

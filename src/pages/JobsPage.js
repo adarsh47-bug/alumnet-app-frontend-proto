@@ -184,14 +184,14 @@ const JobsPage = () => {
         {/* Popup for job form */}
         {isPopupVisible && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div ref={popupRef} className="bg-white p-6 rounded-lg shadow-lg relative w-[50%] scale-[90%]">
+            <div ref={popupRef} className="bg-white p-8 pb-2 rounded-lg shadow-lg relative w-[50%] scale-[90%] max-sm:w-[100%] max-sm:px-2">
               <div className='px-6'>
-                <h2 className=" text-xl font-bold mb-4 ">Add New Collaboration Job</h2>
+                <h2 className=" text-xl font-bold mb-4 ">Add New Collaboration</h2>
                 <button
                   className="absolute top-2 right-2 border border-gray-500 rounded-lg px-2 py-1 mb-2 hover:bg-red-500"
                   onClick={togglePopup}
                 >
-                  Close
+                  <span class="material-icons">close</span>
                 </button>
               </div>
               {/* The form component for creating a job */}
@@ -200,12 +200,12 @@ const JobsPage = () => {
           </div>
         )}
 
-        <div className="flex">
+        <div className="flex max-sm:flex-col max-sm:h-fit">
           {/* Filter Sidebar */}
           <FilterSidebar filters={filters} onFilterChange={handleFilterChange} />
 
           {/* Main content - Job Listings */}
-          <div className="w-[80%] p-8">
+          <div className="w-[80%] p-8 max-sm:w-[100%] h-[90%] max-sm:p-4">
             <h1 className="text-3xl font-bold text-blue-800 mb-6">Collaboration Listings</h1>
 
             {/* Add Job Form */}
@@ -217,8 +217,9 @@ const JobsPage = () => {
                     <input type="text" className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-500 font-medium" placeholder="Create a collaboration listing here." />
                   </div>
 
-                  <button className='rounded-full  bg-blue-400 text-white font-semibold text-sm p-2 px-8 '>
-                    List Collaboration
+                  <button className='rounded-full  bg-blue-400 text-white font-semibold text-sm p-3 px-8 max-sm:px-2 max-sm:py-1 flex items-center'>
+                    <span className='max-sm:hidden text-nowrap'>List Collaboration</span>
+                    <span class="material-icons">add</span>
                   </button>
 
                 </div>
@@ -240,7 +241,7 @@ const JobsPage = () => {
           </div>
         </div>
       </>
-    </Wrapper >
+    </Wrapper>
   );
 };
 

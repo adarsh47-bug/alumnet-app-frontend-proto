@@ -28,33 +28,73 @@ const CourseCard = ({ course, onPurchase }) => (
 const navigation = [
   { name: 'All Resources' },
   { name: 'My Resources' },
-  { name: 'Web Development Resources' },
-  { name: 'Data Science Resources' },
-  { name: 'Mobile App Development Resources' },
-  { name: 'Artificial Intelligence Resources' },
-  { name: 'Cloud Computing Resources' },
-  { name: 'Cybersecurity Resources' },
-  { name: 'Digital Marketing Resources' },
-  { name: 'Graphic Design Resources' },
-  { name: 'Project Management Resources' },
-  { name: 'Business Analytics Resources' }
+  {
+    name: 'Types of Resources',
+    options: [
+      { name: 'Web Development Resources' },
+      { name: 'Data Science Resources' },
+      { name: 'Mobile App Development Resources' },
+      { name: 'Artificial Intelligence Resources' },
+      { name: 'Cloud Computing Resources' },
+      { name: 'Cybersecurity Resources' },
+      { name: 'Digital Marketing Resources' },
+      { name: 'Graphic Design Resources' },
+      { name: 'Project Management Resources' },
+      { name: 'Business Analytics Resources' }
+    ]
+  },
 ];
 
 const Sidebar = ({ navigation, activeCategory, onCategoryClick }) => (
-  <div className="w-[20%] h-screen border-r bg-white">
+  <div className="w-[20%] flex h-screen flex-col justify-between border-e bg-white max-sm:w-[100%] max-sm:h-fit">
     <div className="px-4 py-6">
-      <ul className="space-y-1">
+      <ul className="mt-6 space-y-1">
         {navigation.map((item, index) => (
           <li key={index}>
-            <button
-              onClick={() => onCategoryClick(item.name)}
-              className={`block w-full text-left rounded-lg px-4 py-2 text-sm font-medium ${activeCategory === item.name
-                ? 'bg-gray-100 text-blue-700'
-                : 'text-gray-500 hover:bg-gray-100 hover:text-blue-700'
-                }`}
-            >
-              {item.name}
-            </button>
+            {item.options ? (
+              <details className="group [&_summary::-webkit-details-marker]:hidden" open={window.innerWidth > 640}>
+                <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                  <span className="text-sm font-medium">{item.name}</span>
+                  <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </span>
+                </summary>
+
+                {/* Submenu for options */}
+                <ul className="mt-2 space-y-1 px-4">
+                  {item.options.map((subItem, subIndex) => (
+                    <li key={subIndex} className='flex flex-row items-center'>
+                      <button
+                        onClick={() => onCategoryClick(subItem.name)}
+                        className={`block w-full text-left rounded-lg px-4 py-2 text-sm font-medium ${activeCategory === subItem.name ? 'bg-gray-100 text-gray-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
+                          }`}
+                      >
+                        {subItem.name}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ) : (
+              <button
+                onClick={() => onCategoryClick(item.name)}
+                className={`block w-full text-left rounded-lg px-4 py-2 text-sm font-medium ${activeCategory === item.name ? 'bg-gray-100 text-gray-700' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-700'
+                  }`}
+              >
+                {item.name}
+              </button>
+            )}
           </li>
         ))}
       </ul>
@@ -132,7 +172,7 @@ const CoursesPage = () => {
   }, [isPopupVisible]);
 
   const AddCourseForm = () => (
-    <form className="p-6 mb-6 h-[70vh]">
+    <form className="p-6 mb-6 h-[70vh] max-sm:h-[65vh] sm:overflow-auto max-sm:p-2">
       {['title', 'description', 'imageUrl'].map((field) => (
         <div className="mb-4" key={field}>
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={field}>
@@ -142,7 +182,7 @@ const CoursesPage = () => {
             type="text"
             id={field}
             name={field}
-            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${field === 'description' ? 'h-28' : 'h-14'}`}
+            className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${field === 'description' ? 'h-28 max-sm:h-16' : 'h-14 max-sm:h-12'} `}
           />
         </div>
       ))}
@@ -179,22 +219,25 @@ const CoursesPage = () => {
 
   return (
     <Wrapper>
-      <div className="flex w-[100vw]">
+      <div className="flex w-[100%] max-sm:flex-col">
         <Sidebar navigation={navigation} activeCategory={activeCategory} onCategoryClick={handleCategoryClick} />
-        <div className="w-[80%] p-8">
+        <div className="w-[80%] p-8 max-sm:w-[100%] max-sm:p-3">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold text-blue-800">{activeCategory}</h1>
             <button
               onClick={togglePopup}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 max-sm:px-2 max-sm:mx-1 rounded flex items-center"
             >
-              Publish Resources
+              <span className='max-sm:hidden'> Publish Resources</span>
+              <span class="material-icons">
+                publish
+              </span>
             </button>
           </div>
 
           {isPopupVisible && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-              <div ref={popupRef} className="bg-white p-6 rounded-lg shadow-lg relative w-[50%] scale-[90%]">
+              <div ref={popupRef} className="bg-white p-6 rounded-lg shadow-lg relative w-[50%] max-sm:w-[100%] max-sm:h-fit scale-[90%]">
                 <div className='px-6'>
                   <h2 className="text-xl font-bold mb-4">Publish New Resources</h2>
                   <button

@@ -40,7 +40,7 @@ const EventCard = ({ event, onRegister, viewBtn = false }) => (
 );
 
 const Sidebar = ({ navigation, activeCategory, onCategoryClick }) => (
-  <div className="w-[20%] h-screen border-r bg-white">
+  <div className="w-[20%] h-screen border-r bg-white  max-sm:w-[100%] max-sm:h-fit">
     <div className="px-4 py-6">
       <ul className="space-y-1">
         {navigation.map((item, index) => (
@@ -140,7 +140,7 @@ const EventsPage = () => {
 
   return (
     <Wrapper>
-      <div className="flex w-[100vw]">
+      <div className="flex w-[100%] max-sm:flex-col">
         <Sidebar
           navigation={[
             { name: 'All Events', tag: 'event_note' },
@@ -155,14 +155,14 @@ const EventsPage = () => {
           activeCategory={activeCategory}
           onCategoryClick={handleCategoryClick}
         />
-        <div className="w-[80%] p-8">
+        <div className="w-[80%] p-8 max-sm:w-[100%]">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold text-blue-800">{activeCategory}</h1>
             <button
               onClick={toggleForm}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center"
+              className="bg-blue-500 text-white px-4 py-2 max-sm:px-2 max-sm:mx-1 rounded-lg flex items-center"
             >
-              Post Event
+              <span className='max-sm:hidden'> Post Event</span>
               <span class="material-icons px-2">
                 create
               </span>
@@ -211,7 +211,7 @@ const EventsPage = () => {
 
       {isFormVisible && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div ref={formRef} className="bg-white p-6 rounded-lg shadow-lg relative w-[50%] scale-[90%]">
+          <div ref={formRef} className="bg-white p-6 rounded-lg shadow-lg relative w-[50%] scale-[90%] max-sm:w-[90%]">
             <button className="absolute top-2 right-2 border border-gray-500 rounded-lg px-2 py-1 hover:bg-red-400 hover:text-white" onClick={toggleForm}>
               <span className="material-icons">close</span>
             </button>

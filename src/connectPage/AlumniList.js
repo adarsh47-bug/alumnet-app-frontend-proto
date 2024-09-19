@@ -6,7 +6,7 @@ const AlumniList = ({ alumni, isConnectedTab, onSendRequest, onAcceptRequest, on
   return alumni.length > 0 ? (
     <ul className="flex flex-wrap">
       {[...alumni].map((alumnus, index) => (
-        <li key={index} className="m-2">
+        <li key={index} className="m-2 max-sm:w-[100%]">
           <ConnectCard
             data={alumnus}
             currentPosition={alumnus?.experience?.length === 0 ? 'No specified' : `${alumnus?.experience[0]?.position} at ${alumnus?.experience[0]?.company}`}

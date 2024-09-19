@@ -4,7 +4,7 @@ import Wrapper from '../components/Wrapper';
 
 const ConnectCard = ({ name, graduationYear, degree, currentPosition, location, contact, profileImage }) => {
   return (
-    <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 w-[30vw]" role="alert">
+    <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 w-[30vw] max-sm:w-[100%]" role="alert">
       <div className="flex items-center gap-4">
         <img
           src={profileImage}
@@ -34,7 +34,7 @@ const ConnectCard = ({ name, graduationYear, degree, currentPosition, location, 
 
         <a
           className="mt-2 inline-block w-full rounded-lg bg-gray-50 px-5 py-3 text-center text-sm font-semibold text-gray-500 sm:mt-0 sm:w-auto"
-          href="/home"
+          onClick={() => alert('Currently under development')}
         >
           View Profile
         </a>
@@ -93,7 +93,7 @@ const alumniData = {
 
 const Sidebar = ({ navigation, onClickUniversity, activeUniversity }) => {
   return (
-    <div className="w-[20%] flex h-screen flex-col justify-between border-e bg-white">
+    <div className="w-[20%] flex h-screen flex-col justify-between border-e bg-white max-sm:w-[100%] max-sm:h-fit">
       <div className="px-4 py-6">
         <ul className="mt-6 space-y-1">
           {navigation.map((item, index) => (
@@ -166,17 +166,17 @@ const UniversityPage = () => {
           onClickUniversity={handleUniversityClick} // Pass the click handler to Sidebar
           activeUniversity={selectedUniversity} // Pass the active university
         />
-        <div className="w-[80%] p-8">
+        <div className="w-[80%] max-sm:w-[100%] p-8 max-sm:p-4">
           <h1 className="text-3xl font-bold text-blue-800 mb-1">Universities</h1>
           <p className="text-lg text-gray-700 mb-2">
             Select a university to view the alumni.
           </p>
 
-          <div className="p-6">
+          <div className="p-6 px-0">
             <h2 className="text-2xl font-bold text-blue-700 mb-4">{selectedUniversity} Alumni</h2>
 
             {alumniData[selectedUniversity] ? (
-              <div className="flex flex-wrap">
+              <div className="flex flex-wrap justify-center">
                 {alumniData[selectedUniversity].map((alumnus, index) => (
                   <div key={index} className="m-2">
                     <ConnectCard

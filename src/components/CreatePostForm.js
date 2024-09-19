@@ -40,7 +40,7 @@ const CreatePostForm = ({ onPostCreated }) => {
   };
 
   return (
-    <form onSubmit={submitHandler} className="bg-white p-6 rounded-lg ">
+    <form onSubmit={submitHandler} className="bg-white p-6 rounded-lg max-sm:p-1">
       <h2 className="text-xl font-semibold mb-4">Create a New Post</h2>
 
       <div className="mb-4">

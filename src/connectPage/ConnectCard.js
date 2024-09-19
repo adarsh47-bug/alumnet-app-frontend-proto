@@ -15,7 +15,7 @@ const ConnectCard = ({
   onDeclineRequest, // Add this prop
 }) => {
   return (
-    <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 w-[30vw]" role="alert">
+    <div className="rounded-2xl border border-blue-100 bg-white p-4 shadow-lg sm:p-6 lg:p-8 w-[30vw] max-sm:w-[100%]" role="alert">
       <div className="flex items-center gap-4">
         <img
           src={data?.profileImg}
@@ -54,13 +54,13 @@ const ConnectCard = ({
         {isRequestReceived && (
           <>
             <button
-              className="inline-block w-full rounded-lg px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto bg-green-500"
+              className="inline-block w-full rounded-lg px-5 py-3 text-center text-sm font-semibold text-white max-sm:mb-2 sm:w-auto bg-green-500"
               onClick={onAcceptRequest}
             >
               Accept
             </button>
             <button
-              className="inline-block w-full rounded-lg px-5 py-3 text-center text-sm font-semibold text-white sm:w-auto bg-gray-500"
+              className="inline-block w-full rounded-lg px-5 py-3 text-center text-sm font-semibold text-white max-sm:mb-2 sm:w-auto bg-gray-500"
               onClick={onDeclineRequest}
             >
               Decline

@@ -96,11 +96,11 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
 
         {post?.author?._id !== user._id && (
           isConnected ? (
-            <span className="text-green-500 text-md px-4">Connected</span>
+            <span className="text-green-500 text-md px-4 max-sm:hidden">Connected</span>
           ) : (
             <button
               onClick={handleConnectNow}
-              className="text-blue-500 text-md hover:underline px-4"
+              className="text-blue-500 text-md hover:underline px-4 max-sm:hidden"
             >
               Connect Now
             </button>
@@ -114,7 +114,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
             <span className="material-icons px-2">more_horiz</span>
           </button>
           {showOptions && (
-            <div ref={optionsRef} className="absolute bg-white shadow-lg rounded-md mt-2">
+            <div ref={optionsRef} className="absolute max-sm:right-0 bg-white shadow-lg rounded-md mt-2">
               <ul className="py-2">
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer  flex items-center justify-between">Edit post
                   <span className="material-icons px-2">edit</span>
@@ -133,12 +133,29 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
                 <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center justify-between">Report post
                   <span className="material-icons px-2">report</span>
                 </li>
+                <li onClick={handleClose} className="sm:hidden px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center justify-between">Close post
+                  <span className="material-icons px-2">close</span>
+                </li>
+                <li className="sm:hidden px-4 py-2 hover:bg-gray-100 cursor-pointer flex items-center justify-between">
+                  {post?.author?._id !== user._id && (
+                    isConnected ? (
+                      <span className="text-green-500 text-md px-4">Connected</span>
+                    ) : (
+                      <button
+                        onClick={handleConnectNow}
+                        className="text-blue-500 text-md hover:underline px-4"
+                      >
+                        Connect Now
+                      </button>
+                    )
+                  )}
+                </li>
               </ul>
             </div>
           )}
           <button
             onClick={handleClose}
-            className="ml-auto hover:text-red-600 hover:bg-slate-200 rounded-full size-12 pt-1"
+            className="ml-auto hover:text-red-600 hover:bg-slate-200 rounded-full size-12 pt-1 max-sm:hidden"
           >
             <span className="material-icons px-2">close</span>
           </button>
@@ -289,7 +306,7 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
             >
               <span>{post?.likes?.length || 0}</span>
               <span className="material-icons px-2">thumb_up</span>
-              Like
+              <span className='max-sm:hidden'> Like</span>
             </button>
             <button
               // onClick={() => setShowComments(!showComments)}
@@ -297,14 +314,14 @@ const FeedCard = ({ post, onDeletePost, onLikePost, onCommentPost, onClosePost, 
             >
               <span>{post?.comments?.length || 0}</span>
               <span className="material-icons px-2">comment</span>
-              Comment
+              <span className='max-sm:hidden'> Comment</span>
             </button>
           </>
         )}
         <button className="flex items-center hover:bg-slate-200 px-4 py-2 rounded-md">
           <span>{post?.shares || 0}</span>
           <span className="material-icons px-2">share</span>
-          Share
+          <span className='max-sm:hidden'>Share</span>
         </button>
       </div>
     </div>
